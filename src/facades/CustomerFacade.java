@@ -1,7 +1,5 @@
 package facades;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.sql.Date;
@@ -36,7 +34,6 @@ public class CustomerFacade {
 		if (tempcoupon == null) {
 			throw new CouponSystemException("This coupon does not exist");
 		}
-		
 		cusdao.updateCustomerCoupon(this.customer, coupon);
 		tempcoupon.setAmount(tempcoupon.getAmount()-1);
 		coupdao.updateCoupon(tempcoupon);
@@ -101,5 +98,19 @@ public class CustomerFacade {
 		return allCoupons;
 		
 	}
+	
+	public boolean login(String userName, String password) throws CouponSystemException {
+		CustomerDBDAO cusdao = new CustomerDBDAO();
+		Collection<Customer> customers = new ArrayList<Customer>();
+		customers = cusdao.getAllCustomers();
+		for(Customer c : customers) {
+			if(c.getCustName().equals(userName) && c.getPassword().equals(password)) {
+				return true;
+			}
+			
+				
+			}
+		throw new CouponSystemException("Password or login not correct");
+		}
 
 }

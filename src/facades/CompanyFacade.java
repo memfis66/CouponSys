@@ -147,6 +147,24 @@ public class CompanyFacade {
 		return allCoupons;
 		
 	}
+	
+	public boolean login(String userName, String password) throws CouponSystemException {
+		CompanyDBDAO comdao = new CompanyDBDAO();
+		Collection<Company> companies = new ArrayList<Company>();
+		companies = comdao.getAllCompanies();
+		for(Company c : companies) {
+			if(c.getCompName().equals(userName) && c.getPassword().equals(password)) {
+				return true;
+			}
+			
+				
+			}
+		throw new CouponSystemException("Password or login not correct");
+		}
+	
+	
+	
+	}
 
 
-}
+

@@ -72,7 +72,7 @@ public void updateCoupon(Coupon coupon) throws CouponSystemException {
 		ConnectionPool cpool = ConnectionPool.getInstance();
 		Connection con = cpool.getConnection();
 		System.out.println("connected");
-		String sql = "UPDATE Coupon SET TITLE = ?, START_DATE = ?, END_DATE = ?, AMOUNT = ?, TYPE = ?, MESSAGE = ?, PRICE = ? WHERE ID = ?";
+		String sql = "UPDATE Coupon SET TITLE = ?, START_DATE = ?, END_DATE = ?, AMOUNT = ?, TYPE = ?, MESSAGE = ?, PRICE = ?, IMAGE = ? WHERE ID = ?";
 		try {
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setString(1, coupon.getTitle());

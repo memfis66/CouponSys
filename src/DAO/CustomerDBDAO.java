@@ -256,12 +256,12 @@ public void updateCustomerCoupon(Customer customer, Coupon coupon) throws Coupon
 	Connection con = cpool.getConnection();
 	System.out.println("connected");
 	
-	String sql = "INSERT INTO Customer_Coupon VALUES ?,?";
+	String sql = "INSERT INTO Customer_Coupon VALUES (?,?)";
 	try {
 		PreparedStatement stat = con.prepareStatement(sql);
 		stat.setLong(1, customer.getId());
 		stat.setLong(2, coupon.getId());
-		stat.execute();
+		stat.executeUpdate();
 	}  catch (SQLException e) {
 		throw new CouponSystemException("Update Customer_coupon error" , e);
 	} finally {
