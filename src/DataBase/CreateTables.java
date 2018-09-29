@@ -18,6 +18,7 @@ public class CreateTables {
 		connect = ConnectionPool.getInstance();
 	}
 	
+	// create all tables in DB. 
 	public static void CreateAllTables() throws CouponSystemException {
 		
 		Collection<String> creating = new ArrayList<String>();
